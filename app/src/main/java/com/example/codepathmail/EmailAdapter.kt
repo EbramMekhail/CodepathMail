@@ -3,6 +3,7 @@ package com.example.codepathmail
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -16,6 +17,8 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
         val senderTextView: TextView
         val titleTextView: TextView
         val summaryTextView: TextView
+        val dateTextView: TextView
+        val pictureImageView: ImageView
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each sub-view
@@ -25,6 +28,9 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
             senderTextView = itemView.findViewById(R.id.senderTv)
             titleTextView = itemView.findViewById(R.id.titleTv)
             summaryTextView = itemView.findViewById(R.id.summaryTv)
+            dateTextView = itemView.findViewById(R.id.dateTv)
+            pictureImageView = itemView.findViewById<ImageView>(R.id.imageTv)
+
         }
     }
 
@@ -49,5 +55,7 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
         holder.senderTextView.text = email.sender
         holder.titleTextView.text = email.title
         holder.summaryTextView.text = email.summary
+        holder.dateTextView.text = email.date
+        holder.pictureImageView.setImageResource(email.picture)
     }
 }
